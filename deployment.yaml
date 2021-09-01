@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
       - name: demo
-        image: argoproj/rollouts-demo:red
+        image: argoproj/rollouts-demo:green
         imagePullPolicy: Always
         ports:
         - name: web
@@ -99,9 +99,3 @@ spec:
         address: http://prometheus.istio-system.svc.cluster.local:9090
         query: |
           sum(response_status{app="{{args.service-name}}",role="canary",status=~"2.*"})/sum(response_status{app="{{args.service-name}}",role="canary"})
-          #sum(irate(
-          #  istio_requests_total{reporter="source",destination_service=~"{{args.service-name}}",response_code!~"5.*"}[1m]
-         # )) / 
-         # sum(irate(
-         #   istio_requests_total{reporter="source",destination_service=~"{{args.service-name}}"}[1m]
-         # ))
