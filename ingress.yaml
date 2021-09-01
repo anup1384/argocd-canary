@@ -23,7 +23,7 @@ metadata:
     app: istio-vs
 spec:
   hosts:
-  - "*"
+  - "canary.anup.com"
   gateways:
   - istio-gateway
   http:
